@@ -11,7 +11,7 @@ import me.anichakra.poc.random.rest.domain.Vehicle;
  */
 public interface VehicleService {
 
-	void saveVehicle(Vehicle vehicle);
+	Vehicle saveVehicle(Vehicle vehicle);
 	
 	Vehicle getVehicle(Long id);
 	
