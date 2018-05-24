@@ -16,8 +16,9 @@ public class DefaultVehicleService implements VehicleService {
 	private VehicleRepository vehicleRepository;
 
 	@Override
-	public void saveVehicle(Vehicle vehicle) {
+	public Vehicle saveVehicle(Vehicle vehicle) {
 		vehicleRepository.saveAndFlush(vehicle);
+		return vehicle;
 	}
 
 	@Override
