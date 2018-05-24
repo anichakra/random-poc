@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,15 +32,15 @@ public class VehicleController {
 	}
 	
 	@PostMapping
-	public HttpStatus saveVehicle(@RequestBody Vehicle vehicle) {
-		vehicleService.saveVehicle(vehicle);
- 		return HttpStatus.OK;
+	public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
+		return vehicleService.saveVehicle(vehicle);
+ 		
 	}
 	
 	@DeleteMapping
-	public HttpStatus deleteVehicle(@RequestBody Vehicle vehicle) {
+	public ResponseEntity<Void> deleteVehicle(@RequestBody Vehicle vehicle) {
 		vehicleService.deleteVehicle(vehicle.getId());
- 		return HttpStatus.OK;
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
 	@PostMapping ("/search")
