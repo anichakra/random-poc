@@ -16,5 +16,6 @@ spring:
     password: postgres123
     driver-class-name: org.postgresql.Driver
 
+
 custom:
-  context-path: /@project.version@
+  context-path: /${spring.application.name}/@project.version@
