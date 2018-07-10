@@ -1,5 +1,6 @@
 server:
   port: ${PORT:8080}
+  
 spring: 
   application:
     name: demo-rest-service 
@@ -14,3 +15,6 @@ spring:
     username: postgres
     password: postgres123
     driver-class-name: org.postgresql.Driver
+
+custom:
+  context-path: /@project.version@
