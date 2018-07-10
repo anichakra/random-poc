@@ -25,27 +25,26 @@ public class VehicleController {
 	@Autowired
 	@Qualifier("default")
 	private VehicleService vehicleService;
+
+	@PostMapping
+	public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
+		return vehicleService.saveVehicle(vehicle);		
+	}
+
+	@GetMapping ("/search")
+	public List<Vehicle> searchVehicle(@RequestParam("manufacturer") String manufacturer) {
+		return vehicleService.searchVehicle(manufacturer);
+	}
 	
 	@GetMapping("/{id}")
 	public Vehicle getVehicle(@PathVariable("id") Long id){
 		return vehicleService.getVehicle(id);
 	}
 	
-	@PostMapping
-	public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
-		return vehicleService.saveVehicle(vehicle);
- 		
-	}
-	
 	@DeleteMapping
-	public ResponseEntity<Void> deleteVehicle(@RequestBody Vehicle vehicle) {
-		vehicleService.deleteVehicle(vehicle.getId());
+	public ResponseEntity<Void> deleteVehicle(@RequestParam("id") Long id) {
+		vehicleService.deleteVehicle(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-	
-	@PostMapping ("/search")
-	public List<Vehicle> searchVehicle(@RequestParam("manufacturer") String manufacturer) {
-		return vehicleService.searchVehicle(manufacturer);
-	}
-	
+
 }
