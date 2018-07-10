@@ -50,7 +50,7 @@ java -jar demo-rest-service-0.0.1-SNAPSHOT.jar --POSTGRES_HOST=<remote-host/ip>
 Maven plugin spotify is used. The Dockerfile is invoked to create the docker image in this build command:
 
 ```
-maven install dockerfile:build
+mvn install dockerfile:build
 ```
 Then we can push the image to Dockerhub and then pull it from there in server host and finally run it using:
 
