@@ -14,7 +14,7 @@ To test and run change directory inside the project.
 mvn clean test
 ```
 
-## Build
+## Build and Install
 ```
 mvn install
 ```
@@ -46,6 +46,17 @@ java -jar demo-rest-service-0.0.1-SNAPSHOT.jar --PORT=9090
 java -jar demo-rest-service-0.0.1-SNAPSHOT.jar --POSTGRES_HOST=<remote-host/ip>
 ```
 
+# Using Docker
+Maven plugin spotify is used. The Dockerfile is invoked to create the docker image in this build command:
+
+```
+maven install dockerfile:build
+```
+Then we can push the image to Dockerhub and then pull it from there in server host and finally run it using:
+
+```
+docker run -e "POSTGRES_HOST=remote-host" -p 9090:8080 -t anichakra/demo-rest-service
+```
 
 # Service Version
 Context path version strategy is taken. The service version will be part of the context-path. The version of the service is directly mapped from the project artifact version as defined in the pom.xml. 
