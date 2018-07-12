@@ -26,7 +26,7 @@ public class WebserverCustomizer implements EmbeddedServletContainerCustomizer {
 	public void customize(ConfigurableEmbeddedServletContainer container) {
 		Optional.ofNullable(contextPath).ifPresent(c -> {
 			container.setContextPath(extractVersion(c));
-			System.setProperty("spring.application.name", extractVersion(c).replaceAll("/", "-"));
+			System.setProperty("spring.application.name", extractVersion(c).replaceFirst("/", "").replaceAll("/", "-"));
 		});
 	}
 
