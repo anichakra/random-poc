@@ -1,9 +1,7 @@
 server:
   port: ${PORT:8080}
-  
-spring: 
-  application:
-    name: demo-rest-service 
+
+spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
@@ -13,9 +11,8 @@ spring:
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}/postgres
     username: postgres
-    password: postgres123
+    password: admin@123
     driver-class-name: org.postgresql.Driver
 
-
 custom:
-  context-path: /${spring.application.name}/@project.version@
+  context-path: /@project.name@/@project.version@
